@@ -1,6 +1,6 @@
 (function() {
   'use strict';
-  angular.module('cadence.ui.services', []).factory('logger', [
+  angular.module('cadence.app.services', []).factory('logger', [
     function() {
       var logIt;
       toastr.options = {

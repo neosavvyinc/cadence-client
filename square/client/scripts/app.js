@@ -14,7 +14,7 @@
       'cadence.app.ctrls',
       'cadence.ui.ctrls',
       'cadence.ui.directives',
-      'cadence.ui.services',
+      'cadence.app.services',
       'cadence.controllers',
       'cadence.directives',
       'cadence.form.validation',
