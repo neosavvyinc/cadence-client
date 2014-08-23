@@ -28,7 +28,7 @@
     this.user = {};
     this.signUp = _.bind(function () {
         this.error = null;
-        User.signup(this.user).catch(_.bind(function (err) {
+        User.register(this.user).catch(_.bind(function (err) {
             this.error = err;
         }, this));
     }, this);
