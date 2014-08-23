@@ -13,4 +13,8 @@ describe('cadence', function () {
         $scope = $rootScope.$new();
     }));
 
+    it("Should be true", function () {
+        expect(true).toBe(true);
+    });
+
 });

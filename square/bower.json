@@ -37,6 +37,7 @@
   },
   "devDependencies": {
     "responsive-tables": "*",
-    "bootstrap-sass-official": "~3.2.0"
+    "bootstrap-sass-official": "~3.2.0",
+    "angular-mocks": "~1.2.0"
   }
 }
