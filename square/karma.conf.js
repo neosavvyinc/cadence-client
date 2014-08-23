@@ -15,6 +15,7 @@ module.exports = function (config) {
 
         // list of files / patterns to load in the browser
         files: [
+            'client/bower_components/lodash/dist/lodash.js',
             'client/bower_components/jquery/dist/jquery.js',
             'client/bower_components/angular/angular.js',
             'client/bower_components/angular-*/angular-*.js',
@@ -26,6 +27,7 @@ module.exports = function (config) {
             'client/bower_components/angular-ui-tree/dist/angular-ui-tree.js',
             'client/bower_components/ngmap/dist/ng-map.js',
             'client/bower_components/ng-tags-input/ng-tags-input.js',
+            'client/bower_components/restangular/dist/restangular.js',
             'client/scripts/app.js',
             'client/scripts/**/*.js',
             'test/scripts/**/*.js'
