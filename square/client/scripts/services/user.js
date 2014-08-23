@@ -17,6 +17,9 @@
                     params = params || this;
                     return allUsers.all('logout').customPOST(_.pick(params, 'sessionId'));
                 },
+                register: function (params) {
+                    return allUsers.all('register').customPOST(_.pick(params, 'firstName', 'lastName', 'company', 'email', 'password', 'passwordConfirm'))
+                },
                 forgotPassword: function (params) {
                     params = params || this;
                     return allUsers.all('forgotpassword').customPOST(_.pick(params, 'email'));

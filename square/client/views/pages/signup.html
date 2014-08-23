@@ -14,6 +14,10 @@
 
                 <section>
                     <form class="form-horizontal">
+                        <div class="form-group" ng-show="signupCtrl.error">
+                            <p class="alert alert-danger">Ruh Roh! Looks like something went wrong. You might wanna try that again...</p>
+                        </div>
+ 
                         <div class="form-group">
                             <div class="input-group input-group-lg">
                                 <span class="input-group-addon">
@@ -21,7 +25,8 @@
                                 </span>
                                 <input  type="text"
                                         class="form-control"
-                                        placeholder="First Name">
+                                        placeholder="First Name"
+                                        ng-model="signupCtrl.user.firstName">
                             </div>
                         </div>
                         <div class="form-group">
@@ -31,7 +36,9 @@
                                 </span>
                                 <input  type="text"
                                         class="form-control"
-                                        placeholder="Last Name">
+                                        placeholder="Last Name"
+                                        ng-model="signupCtrl.user.lastName">
+
                             </div>
                         </div>
                         <div class="form-group">
@@ -41,7 +48,8 @@
                                 </span>
                                 <input  type="text"
                                         class="form-control"
-                                        placeholder="Company Name">
+                                        placeholder="Company Name"
+                                        ng-model="signupCtrl.user.company">
                             </div>
                         </div>
                         <div class="form-group">
@@ -51,7 +59,8 @@
                                 </span>
                                 <input type="email"
                                        class="form-control"
-                                       placeholder="Email">
+                                       placeholder="Email"
+                                       ng-model="signupCtrl.user.email">
                             </div>
                         </div>
                         <div class="form-group">
@@ -62,7 +71,7 @@
                                 <input type="password"
                                        class="form-control"
                                        placeholder="Password"
-                                       >
+                                       ng-model="signupCtrl.user.password">
                             </div>
                         </div>
                         <div class="form-group">
@@ -72,16 +81,17 @@
                                 </span>
                                 <input type="confirmPassword"
                                        class="form-control"
-                                       placeholder="Confirm Password">
+                                       placeholder="Confirm Password"
+                                       ng-model="signupCtrl.user.passwordConfirm">
                             </div>
                         </div>
 
                         <div class="form-group">
                             <p class="text-muted text-small">By clicking on Sign up, you agree to <a href="javascript:;">terms & conditions</a> and <a href="javascript:;">privacy policy</a></p>
                             <div class="divider"></div>
-                            <a href="#/" class="btn btn-primary btn-block btn-lg">Sign up</a>
+                            <button ng-click="signupCtrl.signUp()" class="btn btn-primary btn-block btn-lg">Sign up</button>
                         </div>
- 
+
                     </form>
                 </section>
 
