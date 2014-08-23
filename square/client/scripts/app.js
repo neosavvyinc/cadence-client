@@ -29,7 +29,9 @@
       'cadence.page.ctrls',
       'restangular'
   ]).config([
-    '$routeProvider', function($routeProvider) {
+    '$routeProvider', 'RestangularProvider', function($routeProvider, RestangularProvider) {
+
+      RestangularProvider.setBaseUrl('/api');
       return $routeProvider.when('/', {
         redirectTo: '/apps/22'
       }).when('/apps/create', {

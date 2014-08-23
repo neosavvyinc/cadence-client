@@ -4,7 +4,8 @@
     // naming them as such (`User` instead of `UserService`, for instance),
     // but I'm open to discussion on this
     angular.module('cadence.ui.services').factory('User', ['Restangular', function (Restangular) {
-        var allUsers = Restangular.all('users'),
+        var name = 'users',
+            allUsers = Restangular.all(name),
             userMethods = {
                 // each method accepts params, or if the method is being
                 // called on an instance, will evaluate it's own instance
@@ -28,14 +29,14 @@
 
         // make sure all user instances (for example, those received from GET /users or GET /users/:id)
         // have the same login, logout, and forgotPassword methods
-        Restangular.addElementTransformer('users', false, function (user) {
+        Restangular.addElementTransformer(name, false, function (user) {
             for (method in userMethods) {
                 user[method] = _.bind(userMethods[method], user)
             }
             return user;
         });
 
-        return _.tap(Restangular.service('users'), function (users) {
+        return _.tap(Restangular.service(name), function (users) {
             return _.extend(users, userMethods);
         });
     }]);
