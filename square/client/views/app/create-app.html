@@ -19,35 +19,38 @@
                                    data-ng-model="app.name">
                             <br>
                             <label>iTunes Store Url</label>
-                            <input type="text"
+                            <input type="url"
                                    class="form-control"
-                                   required=""
+                                   required
                                    data-ng-model="app.url">
                         </div>
                         <div class="form-group">
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <label>Platform</label>
+
+                            <label>Platform</label>
+
+                            <div>
                                 <span class="ui-select">
                                     <select ng-options="type for type in appTypes"
                                             ng-model="app.appType"></select>
                                 </span>
-                                </div>
-                                <div class="col-md-6">
-                                    <label>Market</label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Market</label>
+
+                            <div>
                                 <span class="ui-select">
                                     <select ng-options="value for value in markets"
                                             ng-model="app.market"
                                             placeholder="Choose One"></select>
                                 </span>
-                                </div>
                             </div>
                         </div>
                         <button type="submit"
-                                class="btn btn-success">Submit
+                                class="btn btn-primary">Submit
                         </button>
-                        <div class="callout callout-info">
-                            <p>Place any useful flash text here!</p>
+                        <div class="callout callout-danger" ng-show="error">
+                            <p ng-bind="error"></p>
                         </div>
                     </form>
                 </div>
