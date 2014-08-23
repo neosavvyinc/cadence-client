@@ -6,17 +6,24 @@
     angular.module('cadence.ui.services').factory('User', ['Restangular', function (Restangular) {
         var name = 'users',
             allUsers = Restangular.all(name),
+            currentUser,
             userMethods = {
                 // each method accepts params, or if the method is being
                 // called on an instance, will evaluate it's own instance
                 // variables instead
                 login: function (params) {
                     params = params || this;
-                    return allUsers.all('login').customPOST(_.pick(params, 'email', 'password'));
+                    return allUsers.all('login').customPOST(_.pick(params, 'email', 'password')).then(function (res) {
+                        currentUser = res;
+                        return res;
+                    });
                 },
                 logout: function (params) {
                     params = params || this;
-                    return allUsers.all('logout').customPOST(_.pick(params, 'sessionId'));
+                    return allUsers.all('logout').customPOST(_.pick(params, 'sessionId')).then(function (res) {
+                        currentUser = null;
+                        return res;
+                    });
                 },
                 register: function (params) {
                     return allUsers.all('register').customPOST(_.pick(params, 'firstName', 'lastName', 'company', 'email', 'password', 'passwordConfirm'))
@@ -37,7 +44,12 @@
         });
 
         return _.tap(Restangular.service(name), function (users) {
-            return _.extend(users, userMethods);
+            return _.extend(users, userMethods, {
+                current: function () {
+                    // for now... 
+                    return currentUser;
+                }
+            });
         });
     }]);
 }).call(this);
