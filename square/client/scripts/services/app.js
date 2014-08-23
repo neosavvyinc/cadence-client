@@ -13,9 +13,7 @@
         // of `what`, `url`, `operation` params, use withConfig
         return Restangular.withConfig(function (RestangularConfigurer) {
             RestangularConfigurer.addFullRequestInterceptor(function (element, operation, what, url, headers, queryParams) {
-                var currentUser;
-                // only add userId param for this route
-                currentUser = User.current() || {};
+                var currentUser = User.current() || {};
                 return { params: { userId: currentUser.id || '140' } };
             });
         }).service(name);

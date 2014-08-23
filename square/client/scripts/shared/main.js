@@ -20,7 +20,6 @@
         $scope.apps = data;
       });
 
-      // for now...
       $scope.apps = [];
     }
   ]);
