@@ -1,6 +1,6 @@
 (function () {
     'user strict';
-    angular.module('cadence.ui.services')
+    angular.module('cadence.app.services')
     .factory('App', ['Restangular', 'User', function (Restangular, User) {
         var name = 'apps';
         // App.getList()

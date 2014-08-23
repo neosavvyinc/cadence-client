@@ -3,7 +3,7 @@
     // NOTE: I like the concept of treating these as models and therefore
     // naming them as such (`User` instead of `UserService`, for instance),
     // but I'm open to discussion on this
-    angular.module('cadence.ui.services').factory('User', ['Restangular', function (Restangular) {
+    angular.module('cadence.app.services').factory('User', ['Restangular', function (Restangular) {
         var name = 'users',
             allUsers = Restangular.all(name),
             currentUser,
