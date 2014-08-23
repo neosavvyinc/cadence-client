@@ -83,9 +83,11 @@
       }).when('/pages/features', {
         templateUrl: 'views/pages/features.html'
       }).when('/pages/signin', {
-        templateUrl: 'views/pages/signin.html'
+        templateUrl: 'views/pages/signin.html',
+        controller: 'signinCtrl as signinCtrl'
       }).when('/pages/signup', {
-        templateUrl: 'views/pages/signup.html'
+        templateUrl: 'views/pages/signup.html',
+        controller: 'signupCtrl as signupCtrl'
       }).when('/pages/forgot', {
         templateUrl: 'views/pages/forgot-password.html'
       }).when('/pages/lock-screen', {
