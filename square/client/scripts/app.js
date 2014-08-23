@@ -119,9 +119,6 @@
         redirectTo: '/404'
       });
     }
-  ]).run(function (App, Metric) {
-      App.one('123123').all('metrics').getList();
-      Metric('123123').getList();
-  });
+  ]);
 
 }).call(this);
