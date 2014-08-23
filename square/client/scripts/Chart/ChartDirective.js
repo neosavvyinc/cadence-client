@@ -89,7 +89,7 @@
               max: 100
             },
             xaxis: {
-              show: false
+              show: true
             },
             grid: {
               hoverable: true,

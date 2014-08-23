@@ -33,10 +33,12 @@
 
       RestangularProvider.setBaseUrl('/api');
       return $routeProvider.when('/', {
-        redirectTo: '/dashboard'
-      }).when('/dashboard', {
-        templateUrl: 'views/dashboard.html'
+        redirectTo: '/apps/22'
       }).when('/apps/create', {
+          templateUrl: 'views/app/create-app.html'
+      }).when('/apps/:id', {
+          templateUrl: 'views/app/view-app.html'
+      }).when('/apps/:id/update', {
           templateUrl: 'views/app/create-app.html'
       }).when('/ui/typography', {
         templateUrl: 'views/ui/typography.html'
@@ -122,5 +124,8 @@
       });
     }
   ]);
+
+  /* Module Instantiation */
+  angular.module('cadence.app.ctrls', []);
 
 }).call(this);

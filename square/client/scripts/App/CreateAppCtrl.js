@@ -1,4 +1,4 @@
-angular.module('cadence.app.ctrls', []).controller('createAppCtrl',
+angular.module('cadence.app.ctrls').controller('createAppCtrl',
     ['$scope', 'MarketsData', 'App', function ($scope, markets, App) {
         $scope.appTypes = ["iPhone", "Android"];
         $scope.markets = markets;
