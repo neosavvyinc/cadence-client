@@ -31,9 +31,7 @@
   ]).config([
     '$routeProvider', function($routeProvider) {
       return $routeProvider.when('/', {
-        redirectTo: '/dashboard'
-      }).when('/dashboard', {
-        templateUrl: 'views/dashboard.html'
+        redirectTo: '/apps/22'
       }).when('/apps/create', {
           templateUrl: 'views/app/create-app.html'
       }).when('/apps/:id', {
