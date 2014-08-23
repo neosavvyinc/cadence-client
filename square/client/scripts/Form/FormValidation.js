@@ -1,6 +1,6 @@
 (function() {
   'use strict';
-  angular.module('app.form.validation', []).controller('wizardFormCtrl', [
+  angular.module('cadence.form.validation', []).controller('wizardFormCtrl', [
     '$scope', function($scope) {
       $scope.wizard = {
         firstName: 'some name',

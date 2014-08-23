@@ -1,6 +1,6 @@
 (function() {
   'use strict';
-  angular.module('app.task', []).factory('taskStorage', function() {
+  angular.module('cadence.task', []).factory('taskStorage', function() {
     var DEMO_TASKS, STORAGE_ID;
     STORAGE_ID = 'tasks';
     DEMO_TASKS = '[ {"title": "Finish homework", "completed": true}, {"title": "Make a call", "completed": true}, {"title": "Build a snowman!", "completed": false}, {"title": "Tango! Tango! Tango!", "completed": false}, {"title": "Play games with friends", "completed": false}, {"title": "Shopping", "completed": false} ]';

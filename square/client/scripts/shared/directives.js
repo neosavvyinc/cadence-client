@@ -1,5 +1,5 @@
 (function() {
-  angular.module('app.directives', []).directive('imgHolder', [
+  angular.module('cadence.directives', []).directive('imgHolder', [
     function() {
       return {
         restrict: 'A',

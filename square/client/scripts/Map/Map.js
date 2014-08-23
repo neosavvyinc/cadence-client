@@ -1,6 +1,6 @@
 (function() {
   'use strict';
-  angular.module('app.map', []).directive('uiJqvmap', [
+  angular.module('cadence.map', []).directive('uiJqvmap', [
     function() {
       return {
         restrict: 'A',

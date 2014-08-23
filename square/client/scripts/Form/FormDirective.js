@@ -1,5 +1,5 @@
 (function() {
-  angular.module('app.ui.form.directives', []).directive('uiRangeSlider', [
+  angular.module('cadence.ui.form.directives', []).directive('uiRangeSlider', [
     function() {
       return {
         restrict: 'A',

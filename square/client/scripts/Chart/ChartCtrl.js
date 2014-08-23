@@ -1,6 +1,6 @@
 (function() {
   'use strict';
-  angular.module('app.chart.ctrls', []).controller('chartCtrl', [
+  angular.module('cadence.chart.ctrls', []).controller('chartCtrl', [
     '$scope', function($scope) {
       $scope.easypiechart = {
         percent: 65,

@@ -1,6 +1,6 @@
 (function() {
   'use strict';
-  angular.module('app.chart.directives', []).directive('gaugeChart', [
+  angular.module('cadence.chart.directives', []).directive('gaugeChart', [
     function() {
       return {
         restrict: 'A',

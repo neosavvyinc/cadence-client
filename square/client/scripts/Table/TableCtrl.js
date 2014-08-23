@@ -1,6 +1,6 @@
 (function() {
   'use strict';
-  angular.module('app.tables', []).controller('tableCtrl', [
+  angular.module('cadence.tables', []).controller('tableCtrl', [
     '$scope', '$filter', function($scope, $filter) {
       var init;
       $scope.stores = [

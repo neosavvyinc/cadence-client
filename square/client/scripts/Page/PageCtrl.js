@@ -1,6 +1,6 @@
 (function() {
   'use strict';
-  angular.module('app.page.ctrls', []).controller('invoiceCtrl', [
+  angular.module('cadence.page.ctrls', []).controller('invoiceCtrl', [
     '$scope', '$window', function($scope, $window) {
       return $scope.printInvoice = function() {
         var originalContents, popupWin, printContents;

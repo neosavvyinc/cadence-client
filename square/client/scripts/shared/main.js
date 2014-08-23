@@ -1,6 +1,6 @@
 (function() {
   'use strict';
-  angular.module('app.controllers', []).controller('AppCtrl', [
+  angular.module('cadence.controllers', []).controller('AppCtrl', [
     '$scope', '$location', function($scope, $location) {
       $scope.isSpecificPage = function() {
         var path;

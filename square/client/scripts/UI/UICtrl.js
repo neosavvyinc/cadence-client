@@ -1,6 +1,6 @@
 (function() {
   'use strict';
-  angular.module('app.ui.ctrls', []).controller('NotifyCtrl', [
+  angular.module('cadence.ui.ctrls', []).controller('NotifyCtrl', [
     '$scope', 'logger', function($scope, logger) {
       return $scope.notify = function(type) {
         switch (type) {

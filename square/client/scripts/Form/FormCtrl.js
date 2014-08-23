@@ -1,6 +1,6 @@
 (function() {
   'use strict';
-  angular.module('app.ui.form.ctrls', []).controller('TagsDemoCtrl', [
+  angular.module('cadence.ui.form.ctrls', []).controller('TagsDemoCtrl', [
     '$scope', function($scope) {
       return $scope.tags = ['foo', 'bar'];
     }

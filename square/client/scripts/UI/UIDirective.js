@@ -1,6 +1,6 @@
 (function() {
   'use strict';
-  angular.module('app.ui.directives', []).directive('uiTime', [
+  angular.module('cadence.ui.directives', []).directive('uiTime', [
     function() {
       return {
         restrict: 'A',

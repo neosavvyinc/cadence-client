@@ -1,6 +1,6 @@
 (function() {
   'use strict';
-  angular.module('app.localization', []).factory('localize', [
+  angular.module('cadence.localization', []).factory('localize', [
     '$http', '$rootScope', '$window', function($http, $rootScope, $window) {
       var localize;
       localize = {
