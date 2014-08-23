@@ -14,12 +14,24 @@
       };
     }
   ]).controller('NavCtrl', [
-    '$scope', 'taskStorage', 'filterFilter', function($scope, taskStorage, filterFilter) {
+    '$scope', 'taskStorage', 'filterFilter', 'App', function($scope, taskStorage, filterFilter, App) {
       var tasks;
       tasks = $scope.tasks = taskStorage.get();
       $scope.taskRemainingCount = filterFilter(tasks, {
         completed: false
       }).length;
+
+      App.getList().then(function (data) {
+        $scope.apps = data;
+      });
+
+      // for now...
+      $scope.apps = [
+          { name: 'Sneeky' },
+          { name: 'Shoutout' },
+          { name: 'Push For Pizza' }
+      ];
+
       return $scope.$on('taskRemaining:changed', function(event, count) {
         return $scope.taskRemainingCount = count;
       });

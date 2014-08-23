@@ -30,7 +30,7 @@
                                     <label>Platform</label>
                                 <span class="ui-select">
                                     <select ng-options="type for type in appTypes"
-                                            ng-model="app.type"></select>
+                                            ng-model="app.appType"></select>
                                 </span>
                                 </div>
                                 <div class="col-md-6">
@@ -44,9 +44,7 @@
                             </div>
                         </div>
                         <button type="submit"
-                                class="btn btn-success"
-                                data-ng-disabled="!canSubmit()"
-                                disabled="disabled">Submit
+                                class="btn btn-success">Submit
                         </button>
                         <div class="callout callout-info">
                             <p>Place any useful flash text here!</p>
