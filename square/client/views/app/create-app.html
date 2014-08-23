@@ -10,28 +10,30 @@
                     <form name="form_constraints"
                           class="form-validation"
                           novalidate=""
-                          data-ng-submit="submitForm()">
+                          data-ng-submit="submitForm(form_constraints.$valid)">
                         <div class="form-group">
                             <label>Application Name</label>
                             <input type="text"
                                    class="form-control"
-                                   required=""
-                                   data-ng-model="app.name">
+                                   data-ng-model="app.name"
+                                   required>
                             <br>
                             <label>iTunes Store Url</label>
                             <input type="url"
                                    class="form-control"
                                    required
-                                   data-ng-model="app.url">
+                                   data-ng-model="app.url"
+                                   required>
                         </div>
                         <div class="form-group">
 
                             <label>Platform</label>
 
                             <div>
-                                <span class="ui-select">
+                                <span class="ui-select no-pad">
                                     <select ng-options="type for type in appTypes"
-                                            ng-model="app.appType"></select>
+                                            ng-model="app.appType"
+                                            required></select>
                                 </span>
                             </div>
                         </div>
@@ -39,10 +41,11 @@
                             <label>Market</label>
 
                             <div>
-                                <span class="ui-select">
+                                <span class="ui-select no-pad">
                                     <select ng-options="value for value in markets"
                                             ng-model="app.market"
-                                            placeholder="Choose One"></select>
+                                            placeholder="Choose One"
+                                            required></select>
                                 </span>
                             </div>
                         </div>
