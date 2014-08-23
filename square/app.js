@@ -1,11 +1,10 @@
-
 var express = require('express')
-  , http = require('http')
-;
+    , http = require('http')
+    , httpProxy = require("http-proxy");
 
 var app = express();
 
-app.configure(function() {
+app.configure(function () {
     app.set('port', process.env.PORT || 3333)
     app.use(express.bodyParser());
     app.use(express.methodOverride());
@@ -14,6 +13,8 @@ app.configure(function() {
     app.use(express.static(__dirname + "/dist"));
 });
 
-http.createServer(app).listen(app.get('port'), function() {
+http.createServer(app, function (req, res) {
+    console.log("THIS SERVER RECEIVED A REQUEST: " + req);
+}).listen(app.get('port'), function () {
     console.log("Express server listening on port " + app.get('port'));
 });
