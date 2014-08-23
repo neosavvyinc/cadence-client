@@ -8,10 +8,13 @@ mountFolder = (connect, dir) ->
 
 allProxies = [
   {
-    context: '/api',
+    context: '/',
     host: 'localhost',
     port: 8080,
     https: false,
+    rewrite: {
+      '/api': '/'
+    }
   }
 ];
 
@@ -70,29 +73,8 @@ module.exports = (grunt) ->
             livereload:
                 options:
                     middleware: (connect, options) ->
-                        [lrSnippet, mountFolder(connect, ".tmp"), mountFolder(connect, yeomanConfig.app)].concat([require("grunt-connect-proxy/lib/utils").proxyRequest])
+                        [lrSnippet, mountFolder(connect, ".tmp"), mountFolder(connect, yeomanConfig.app), require("grunt-connect-proxy/lib/utils").proxyRequest]
                 proxies: allProxies
-
-            server:
-                options:
-                    middleware: (connect, options) ->
-                        options.base = [options.base]  unless Array.isArray(options.base)
-
-                        # Setup the proxy
-                        middlewares = [require("grunt-connect-proxy/lib/utils").proxyRequest]
-
-                        # Serve static files.
-                        options.base.forEach (base) ->
-                          middlewares.push connect.static(base)
-                          return
-
-
-                        # Make directory browse-able.
-                        directory = options.directory or options.base[options.base.length - 1]
-                        middlewares.push connect.directory(directory)
-                        middlewares
-                proxies: allProxies
-
 
             test:
                 options:
@@ -311,7 +293,7 @@ module.exports = (grunt) ->
 
     grunt.registerTask "server", (target) ->
         return grunt.task.run(["build", "open", "connect:dist:keepalive"])  if target is "dist"
-        grunt.task.run ["clean:server", "concurrent:server", 'configureProxies:server', "connect:livereload", "open", "watch"]
+        grunt.task.run ["clean:server", "concurrent:server", 'configureProxies:livereload', "connect:livereload", "open", "watch"]
 
     grunt.registerTask "lessServer", (target) ->
         return grunt.task.run(["buildLess", "open", "connect:dist:keepalive"])  if target is "dist"

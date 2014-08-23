@@ -7,7 +7,7 @@ angular.module('cadence.app.ctrls').controller('createAppCtrl',
                 $scope.app = app;
             });
         } else {
-            $scope.app = { type: $scope.appTypes[0] };
+            $scope.app = { appType: $scope.appTypes[0] };
         }
 
         $scope.markets = markets;

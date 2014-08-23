@@ -37,7 +37,7 @@
         // make sure all user instances (for example, those received from GET /users or GET /users/:id)
         // have the same login, logout, and forgotPassword methods
         Restangular.addElementTransformer(name, false, function (user) {
-            for (method in userMethods) {
+            for (var method in userMethods) {
                 user[method] = _.bind(userMethods[method], user)
             }
             return user;
