@@ -6,6 +6,15 @@ lrSnippet = require("connect-livereload")(port: LIVERELOAD_PORT)
 mountFolder = (connect, dir) ->
     connect.static require("path").resolve(dir)
 
+allProxies = [
+  {
+    context: '/api',
+    host: 'localhost',
+    port: 8080,
+    https: false,
+    xforward: false,
+  }
+];
 
 # # Globbing
 # for performance reasons we're only matching one level down:
@@ -63,6 +72,7 @@ module.exports = (grunt) ->
                 options:
                     middleware: (connect) ->
                         [lrSnippet, mountFolder(connect, ".tmp"), mountFolder(connect, yeomanConfig.app)]
+                proxies: allProxies
 
             test:
                 options:
@@ -73,6 +83,7 @@ module.exports = (grunt) ->
                 options:
                     middleware: (connect) ->
                         [mountFolder(connect, yeomanConfig.dist)]
+                proxies: allProxies
 
         open:
             server:
