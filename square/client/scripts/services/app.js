@@ -8,7 +8,7 @@
 
         Restangular.addFullRequestInterceptor(function (element, operation, what, url, headers, queryParams) {
             // TODO fetch userId from somewhere
-            
+
             // only add userId param for this route
             if (what === name) {
                 return { params: { userId: '140' } };
