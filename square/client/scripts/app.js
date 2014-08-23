@@ -1,6 +1,32 @@
 (function() {
   'use strict';
-  angular.module('cadence', ['ngRoute', 'ngAnimate', 'ui.bootstrap', 'easypiechart', 'mgo-angular-wizard', 'textAngular', 'ui.tree', 'ngMap', 'ngTagsInput', 'cadence.ui.ctrls', 'cadence.ui.directives', 'cadence.ui.services', 'cadence.controllers', 'cadence.directives', 'cadence.form.validation', 'cadence.ui.form.ctrls', 'cadence.ui.form.directives', 'cadence.tables', 'cadence.map', 'cadence.task', 'cadence.localization', 'cadence.chart.ctrls', 'cadence.chart.directives', 'cadence.page.ctrls']).config([
+  angular.module('cadence', [
+      'ngRoute',
+      //'ngAnimate',
+      'ui.bootstrap',
+      'easypiechart',
+      'mgo-angular-wizard',
+      'textAngular',
+      'ui.tree',
+      'ngMap',
+      'ngTagsInput',
+      'cadence.ui.ctrls',
+      'cadence.ui.directives',
+      'cadence.ui.services',
+      'cadence.controllers',
+      'cadence.directives',
+      'cadence.form.validation',
+      'cadence.ui.form.ctrls',
+      'cadence.ui.form.directives',
+      'cadence.tables',
+      'cadence.map',
+      'cadence.task',
+      'cadence.localization',
+      'cadence.chart.ctrls',
+      'cadence.chart.directives',
+      'cadence.page.ctrls',
+      'restangular'
+  ]).config([
     '$routeProvider', function($routeProvider) {
       return $routeProvider.when('/', {
         redirectTo: '/dashboard'
