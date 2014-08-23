@@ -14,24 +14,32 @@
       };
     }
   ])
-  .controller('signinCtrl', ['$scope', 'User', function ($scope, User) {
+  .controller('signinCtrl', ['$scope', 'User', '$location', function ($scope, User, $location) {
     this.error = null;
     this.user = {};
     this.logIn = _.bind(function () {
         this.error = null;
-        User.login(this.user).catch(_.bind(function (err) {
-            this.error = err;
-        }, this));
+        User.login(this.user)
+            .then(function (res) {
+                $location.path('/');
+            })  
+            .catch(_.bind(function (err) {
+                this.error = err;
+            }, this));
     }, this);
   }])
-  .controller('signupCtrl', ['$scope', 'User', function ($scope, User) {
+  .controller('signupCtrl', ['$scope', 'User', '$location', function ($scope, User, $location) {
     this.error = null;
     this.user = {};
     this.signUp = _.bind(function () {
         this.error = null;
-        User.register(this.user).catch(_.bind(function (err) {
-            this.error = err;
-        }, this));
+        User.register(this.user)
+            .then(function (res) {
+                $location.path('/');
+            })
+            .catch(_.bind(function (err) {
+                this.error = err;
+            }, this));
     }, this);
   }])
   .controller('forgotPasswordCtrl', ['$scope', 'User', function ($scope, User) {
