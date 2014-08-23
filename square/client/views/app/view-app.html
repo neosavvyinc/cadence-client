@@ -1,0 +1,69 @@
+<div class="page page-app-show">
+    <div class="row">
+        <div class="col-md-12"
+             data-ng-controller="viewAppCtrl">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <strong>{{app.name}} ({{app.type}})</strong>
+                </div>
+                <div class="panel-body">
+                    <div ng-if="$location.search().chart == 'real' || !$location.search().chart">
+                        <div data-ng-controller="flotChartCtrl.realtime">
+                            <div data-flot-chart-realtime
+                                 data-type="realtime"
+                                 style="width: 100%; height: 400px;"></div>
+                        </div>
+                    </div>
+                    <div ng-if="$location.search().chart == 'line'">
+                        <div data-ng-controller="flotChartCtrl">
+                            <div data-flot-chart
+                                 data-data="line1.data"
+                                 data-options="line1.options"
+                                 style="width: 100%; height: 300px;"></div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="btn-group"
+                                 dropdown=""
+                                 is-open="status.isopen7">
+                                <button type="button"
+                                        class="btn btn-dark dropdown-toggle"
+                                        aria-haspopup="true"
+                                        aria-expanded="false"> {{chartTypes[$location.search().chart || 'real']}} <span class="caret"></span></button>
+                                <ul class="dropdown-menu"
+                                    role="menu">
+                                    <li ng-repeat="(key, value) in chartTypes"><a href="#/apps/{{app.id}}?chart={{key}}">{{value}}</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <strong>Edit {{app.name}}</strong>
+                </div>
+                <div class="panel-body">
+                    <a ng-href="{{app.url}}"
+                       target="_blank"
+                       class="btn btn-info btn-block">
+                        View iTunes Store
+                    </a>
+                    <a class="btn btn-info btn-block"
+                       href="#/apps/{{app.id}}/update">Edit Application</a>
+                    <a class="btn btn-warning btn-block">Archive Application</a>
+                </div>
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <strong>{{app.name}} Developers</strong>
+                </div>
+                <div class="panel-body">
+                    <h5>API KEY: {{app.apiKey}}</h5>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

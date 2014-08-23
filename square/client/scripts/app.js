@@ -36,6 +36,10 @@
         templateUrl: 'views/dashboard.html'
       }).when('/apps/create', {
           templateUrl: 'views/app/create-app.html'
+      }).when('/apps/:id', {
+          templateUrl: 'views/app/view-app.html'
+      }).when('/apps/:id/update', {
+          templateUrl: 'views/app/create-app.html'
       }).when('/ui/typography', {
         templateUrl: 'views/ui/typography.html'
       }).when('/ui/buttons', {
@@ -119,5 +123,8 @@
       });
     }
   ]);
+
+  /* Module Instantiation */
+  angular.module('cadence.app.ctrls', []);
 
 }).call(this);
