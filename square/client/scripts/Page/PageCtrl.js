@@ -18,6 +18,7 @@
     this.error = null;
     this.user = {};
     this.logIn = _.bind(function () {
+        this.error = null;
         User.login(this.user).catch(_.bind(function (err) {
             this.error = err;
         }, this));
