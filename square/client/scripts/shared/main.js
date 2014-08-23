@@ -10,17 +10,15 @@
       return $scope.main = {
         brand: 'Cadence',
         name: 'Lemmy Kilmister',
-        title: 'Gonna Kick Your Ass'
+        title: 'Gonna Kick Your Ass',
+        apps: []
       };
     }
   ]).controller('NavCtrl', [
     '$scope', 'App', function($scope, App) {
-
       App.getList().then(function (data) {
-        $scope.apps = data;
+        $scope.main.apps = data;
       });
-
-      $scope.apps = [];
     }
   ]);
 
