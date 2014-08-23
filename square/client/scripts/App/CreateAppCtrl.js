@@ -13,6 +13,8 @@ angular.module('cadence.app.ctrls').controller('createAppCtrl',
         $scope.markets = markets;
 
         $scope.submitForm = function () {
-            App.post($scope.app);
+            App.post(_.merge($scope.app, {ownerId: 140})).then(function (app) {
+                console.log("Created: " + app);
+            });
         }
     }]);
