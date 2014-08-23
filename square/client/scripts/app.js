@@ -10,6 +10,8 @@
       'ui.tree',
       'ngMap',
       'ngTagsInput',
+      'cadence.data',
+      'cadence.app.ctrls',
       'cadence.ui.ctrls',
       'cadence.ui.directives',
       'cadence.ui.services',
@@ -32,6 +34,8 @@
         redirectTo: '/dashboard'
       }).when('/dashboard', {
         templateUrl: 'views/dashboard.html'
+      }).when('/apps/create', {
+          templateUrl: 'views/app/create-app.html'
       }).when('/ui/typography', {
         templateUrl: 'views/ui/typography.html'
       }).when('/ui/buttons', {
