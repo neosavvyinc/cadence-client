@@ -33,9 +33,11 @@
 
       RestangularProvider.setBaseUrl('/');
       return $routeProvider.when('/', {
-        redirectTo: '/apps/22'
+        redirectTo: '/apps/none'
       }).when('/apps/create', {
           templateUrl: 'views/app/create-app.html'
+      }).when('/apps/none', {
+          templateUrl: 'views/app/no-app.html'
       }).when('/apps/:id', {
           templateUrl: 'views/app/view-app.html'
       }).when('/apps/:id/update', {
