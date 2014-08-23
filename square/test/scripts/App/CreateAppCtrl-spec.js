@@ -3,7 +3,7 @@
 describe('Controller: createAppCtrl', function () {
 
     // load the controller's module
-    beforeEach(module('cadence.app.ctrls', 'cadence.data'));
+    beforeEach(module('cadence.app.ctrls', 'cadence.data', 'cadence.ui.services', 'restangular'));
 
     var controller,
         markets,

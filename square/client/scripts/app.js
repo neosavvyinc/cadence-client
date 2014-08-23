@@ -97,7 +97,8 @@
         templateUrl: 'views/pages/signup.html',
         controller: 'signupCtrl as signupCtrl'
       }).when('/pages/forgot', {
-        templateUrl: 'views/pages/forgot-password.html'
+        templateUrl: 'views/pages/forgot-password.html',
+        controller: 'forgotPasswordCtrl as forgotPasswordCtrl'
       }).when('/pages/lock-screen', {
         templateUrl: 'views/pages/lock-screen.html'
       }).when('/pages/profile', {

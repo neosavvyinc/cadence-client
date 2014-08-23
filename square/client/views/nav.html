@@ -9,10 +9,7 @@
         <li>
             <a href="#/apps"><i class="fa fa-bar-chart-o"></i><span data-i18n="Apps"></span></a>
             <ul>
-                <!-- Do ng-repeat here for the users applications -->
-                <li><a href="#/apps/sneeky"><i class="fa fa-caret-right"></i><span data-i18n="Sneeky"></span></a></li>
-                <li><a href="#/apps/shoutout"><i class="fa fa-caret-right"></i><span data-i18n="Shoutout"></span></a></li>
-                <li><a href="#/apps/pushforpizza"><i class="fa fa-caret-right"></i><span data-i18n="Push For Pizza"></span></a></li>
+                <li ng-repeat="app in apps"><a ng-href="#/apps/{{app.name}}"><i class="fa fa-caret-right"></i><span data-i18n="{{app.name}}"></span></a></li>
             </ul>
         </li>
         <li>

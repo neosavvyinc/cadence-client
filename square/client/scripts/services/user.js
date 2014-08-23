@@ -1,5 +1,5 @@
 (function () {
-    'user strict';
+    'use strict';
     // NOTE: I like the concept of treating these as models and therefore
     // naming them as such (`User` instead of `UserService`, for instance),
     // but I'm open to discussion on this

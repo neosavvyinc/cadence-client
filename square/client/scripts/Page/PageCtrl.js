@@ -33,6 +33,16 @@
         }, this));
     }, this);
   }])
+  .controller('forgotPasswordCtrl', ['$scope', 'User', function ($scope, User) {
+    this.error = null;
+    this.user = {};
+    this.forgotPassword = _.bind(function () {
+        this.error = null;
+        User.forgotPassword(this.user).catch(_.bind(function (err) {
+            this.error = err;
+        }, this));
+    }, this);
+  }])
 
 }).call(this);
 
