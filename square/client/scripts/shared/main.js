@@ -9,7 +9,8 @@
       };
       return $scope.main = {
         brand: 'Cadence',
-        name: 'Leeroy Jenkins'
+        name: 'Lemmy Kilmister',
+        title: 'Gonna Kick Your Ass'
       };
     }
   ]).controller('NavCtrl', [
