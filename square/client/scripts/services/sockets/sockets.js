@@ -8,10 +8,13 @@
                     subscriptions = {};
 
                 ws.onmessage = function (event) {
-                    var handlers = subscriptions[event];
-                    if (handlers && handlers.length) {
-                        for (var i = 0; i < handlers.length; i++) {
-                            handlers[i].apply(this, arguments);
+                    if (event && event.data) {
+                        event = JSON.parse(event.data).event;
+                        var handlers = subscriptions[event];
+                        if (handlers && handlers.length) {
+                            for (var i = 0; i < handlers.length; i++) {
+                                handlers[i].apply(this, arguments);
+                            }
                         }
                     }
                 };
