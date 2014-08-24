@@ -1,15 +1,34 @@
 angular.module('cadence.app.ctrls').controller('viewAppCtrl',
-    ['$scope', '$location', 'App', '$route',
-        function ($scope, $location, App, $route) {
+    ['$scope', '$location', 'App', 'Sockets', '$route',
+        function ($scope, $location, App, Sockets, $route) {
 
             //Load up the app
-            App.one($route.current.params.id).get().then(function (app) {
-                $scope.app = app;
+            App.one($route.current.params.id).get().
+                then(function (app) {
+                    $scope.app = app;
+                    return app;
+                }).
+                then(function (app) {
+                    return App.metrics(app.id);
+                }).then(function (result) {
+                    $scope.metrics = result;
+                });
+
+            //Subscribe to the socket for updates
+            var dereg = Sockets.subscribe("metricsChanged", function () {
+                console.log("The metrics just changed!");
             });
+
+            //Removes the web socket when the $scope is destroyed
+            $scope.$on('$destroy', dereg);
 
             $scope.$location = $location;
             $scope.chartTypes = {
                 real: 'Real Time Chart',
                 line: 'Line Chart'
+            };
+
+            $scope.sampleCheckin = function () {
+                App.checkin({appId: String($scope.app.id), deviceId: 'DASHBOARD_TEST_' + $scope.app.id});
             };
         }]);

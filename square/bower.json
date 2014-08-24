@@ -34,7 +34,9 @@
     "ngmap": "~0.6.0",
     "jqvmap": "*",
     "ng-tags-input": "~2.0.1",
-    "restangular": "~1.4.0"
+    "restangular": "~1.4.0",
+    "reconnecting-websocket": "https://github.com/joewalnes/reconnecting-websocket.git",
+    "momentjs": "~2.8.2"
   },
   "devDependencies": {
     "responsive-tables": "*",
