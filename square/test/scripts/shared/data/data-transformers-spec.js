@@ -43,27 +43,33 @@ describe('Service: DataTransformers', function () {
 
         it("Should convert obejcts so that the time is the x (0 index) and the value is the y (1 index)", function () {
             expect(metrics(data)).toEqual([[
-                "Aug 23, 19:48:00",
-                10
+                0,
+                10,
+                "Aug 23, 19:48:00"
             ], [
-                "Aug 23, 20:55:00",
-                4
+                1,
+                4,
+                "Aug 23, 20:55:00"
             ], [
-                "Aug 23, 21:13:00",
-                2
+                2,
+                2,
+                "Aug 23, 21:13:00"
             ]]);
         });
 
         it("Should format the date and time on the x via moment js", function () {
             expect(metrics(data)).toEqual([[
-                "Aug 23, 19:48:00",
-                10
+                0,
+                10,
+                "Aug 23, 19:48:00"
             ], [
-                "Aug 23, 20:55:00",
-                4
+                1,
+                4,
+                "Aug 23, 20:55:00"
             ], [
-                "Aug 23, 21:13:00",
-                2
+                2,
+                2,
+                "Aug 23, 21:13:00"
             ]]);
         });
 
