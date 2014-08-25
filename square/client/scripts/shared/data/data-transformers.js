@@ -2,12 +2,13 @@
 
     angular.module('cadence.data').factory('DataTransformers', function () {
         return {
-            metrics: function (data) {
-                var count = 0;
+            metrics: function (data, now) {
                 if (data && data.length) {
                     var re = /\sZ$/g;
-                    return _.map(data, function (m) {
-                        return [count++, m.count, moment(m.time.replace(re, '')).format("MMM D, H:mm:SS")];
+
+                    return _.map(data, function (m, i) {
+                        var parsed = moment(m.time.replace(re, ''));
+                        return [i, m.count, parsed.format("MMM D, H:mm:SS")];
                     });
                 }
                 return data;

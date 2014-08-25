@@ -23,6 +23,7 @@ angular.module('cadence.app.ctrls').controller('viewAppCtrl',
                     App.metrics($scope.app.id).then(function (metrics) {
                        if (typeof $scope.chartFns.updateRealtimeChart === 'function') {
                            $scope.chartFns.updateRealtimeChart(metrics);
+                           $scope.connectedClients = _.last(metrics).count;
                        }
                     });
                 } else {
@@ -35,8 +36,7 @@ angular.module('cadence.app.ctrls').controller('viewAppCtrl',
 
             $scope.$location = $location;
             $scope.chartTypes = {
-                real: 'Real Time Chart',
-                line: 'Line Chart'
+                real: 'Real Time Chart'
             };
 
             //Getters
@@ -44,6 +44,6 @@ angular.module('cadence.app.ctrls').controller('viewAppCtrl',
 
             //Action Handlers
             $scope.sampleCheckin = function () {
-                App.checkin({appId: String($scope.app.id), deviceId: 'DASHBOARD_TEST_' + $scope.app.id});
+                App.checkin({ appId: String($scope.app.id), deviceId: 'DASHBOARD_TEST_' + $scope.app.id });
             };
         }]);

@@ -24,13 +24,15 @@
             // methods will get called for every service call. to avoid conditional checking
             // of `what`, `url`, `operation` params, use withConfig
 
-            var service = Restangular.withConfig(function (RestangularConfigurer) {
+            var config = Restangular.withConfig(function (RestangularConfigurer) {
                 RestangularConfigurer.addFullRequestInterceptor(
                     function (element, operation, what, url, headers, queryParams) {
-                        var currentUser = User.current() || {};
-                        return { params: { userId: currentUser.id || '25' } };
+                        var currentUser = User.current || {};
+                        return { params: { userId: currentUser.id || '140' } };
                     });
-            }).service(name);
+            });
+            
+            var service = config.service(name);
 
             return _.tap(service, function (apps) {
                 return _.extend(apps, appMethods);

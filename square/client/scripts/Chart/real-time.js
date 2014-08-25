@@ -1,8 +1,8 @@
 (function () {
     'use strict';
 
-    angular.module('cadence.chart.directives').directive('realtimeChart', ['$timeout',
-        function ($timeout) {
+    angular.module('cadence.chart.directives').directive('realtimeChart', ['$timeout', '$interval',
+        function ($timeout, $interval) {
             return {
                 restrict: 'A',
                 scope: {
@@ -10,13 +10,38 @@
                     transformer: '=',
                     updateTrigger: '='
                 },
-                link: function (scope, ele, attrs) {
+                link: function (scope, elem, attrs) {
                     var _plot,
+                        _data = [],
+                        _offset = 0,
                         _chooseData = function (data) {
                             return (typeof scope.transformer === 'function' ? scope.transformer(data) : data);
                         },
                         _initData = function (data) {
-                            _plot = $.plot(ele[0], [_chooseData(data)], {
+                            $interval(function () {
+//                                if (_data.length > 1) {
+//                                    _.tap(_data.slice(1), function (data) {
+//                                        var last = _.last(data);
+//                                        last[0]++;
+//                                        data.push(last);
+//                                        _data = data;
+//                                    });
+//                                }
+                                
+                                if (_offset) {
+                                    var data = _chooseData(_data.slice(_offset));
+                                    _plot.setData([data]);
+//                                    var max = _.max(data, function (value) {
+//                                        return value[1];
+//                                    });
+//                                    _plot.getOptions().yaxes[0].max = max;
+//                                    _plot.setupGrid();
+                                    _plot.draw();
+                                }
+                                
+                            }, 60);
+
+                            _plot = $.plot(elem[0], [_chooseData(data)], {
                                 series: {
                                     lines: {
                                         show: true,
@@ -26,10 +51,12 @@
                                 },
                                 yaxis: {
                                     min: 0,
-                                    max: 10
+                                    max: 150
                                 },
                                 xaxis: {
-                                    show: false
+                                    tickFormatter: function () {
+                                        return "";
+                                    }
                                 },
                                 grid: {
                                     hoverable: true,
@@ -55,16 +82,27 @@
 
                     if (attrs.updateTrigger) {
                         ns.applyTo(scope.$parent, attrs.updateTrigger, function (data) {
-                            if (!_plot) {
-                                _initData(data)
+
+//                            if (oldIds.length && diff.length) {
+//                                _offset += diff.length;
+//                            }
+                            if (_data.length && (_data.length !== data.length)) {
+                                _offset += data.length - _data.length;
                             }
-                            _plot.setData([_chooseData(data)]);
-                            _plot.draw();
+                            
+                            _data = data;
                         });
                     }
 
                     scope.$watch('chartData', function (val) {
+                        var re = /\sZ$/g;
                         if (val && val.length) {
+                            var now = moment().subtract(5, "minutes")
+//                            _.merge(_data, _.filter(val, function (item) {
+//                                var parsed = item.time.replace(re, '');
+//                                return moment(parsed).isAfter(now);
+//                            }));
+//                            _initData(_data);
                             _initData(val);
                         }
                     });

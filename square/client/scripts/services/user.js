@@ -14,6 +14,7 @@
                 login: function (params) {
                     params = params || this;
                     return allUsers.all('login').customPOST(_.pick(params, 'email', 'password')).then(function (res) {
+                        debugger;
                         currentUser = res;
                         return res;
                     });
@@ -45,8 +46,7 @@
 
         return _.tap(Restangular.service(name), function (users) {
             return _.extend(users, userMethods, {
-                current: function () {
-                    // for now... 
+                get current () {
                     return currentUser;
                 }
             });
