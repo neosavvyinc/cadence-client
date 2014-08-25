@@ -28,16 +28,9 @@
 //                                    });
 //                                }
                                 
-                                if (_offset) {
-                                    var data = _chooseData(_data.slice(_offset));
-                                    _plot.setData([data]);
-//                                    var max = _.max(data, function (value) {
-//                                        return value[1];
-//                                    });
-//                                    _plot.getOptions().yaxes[0].max = max;
-//                                    _plot.setupGrid();
-                                    _plot.draw();
-                                }
+                                var data = _chooseData(_data.slice(_offset));
+                                _plot.setData([data]);
+                                _plot.draw();
                                 
                             }, 60);
 
@@ -54,8 +47,9 @@
                                     max: 150
                                 },
                                 xaxis: {
-                                    tickFormatter: function () {
-                                        return "";
+                                    show: true,
+                                    tickFormatter: function (timestamp) {
+                                        return moment.unix(timestamp).format("H:mm:SS");
                                     }
                                 },
                                 grid: {
