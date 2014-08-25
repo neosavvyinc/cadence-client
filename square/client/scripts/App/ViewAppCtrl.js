@@ -3,6 +3,9 @@ angular.module('cadence.app.ctrls').controller('viewAppCtrl',
         function ($scope, $location, App, Sockets, $route, dataTransformers) {
 
             //Load up the app
+            $scope.chartFns = {
+
+            };
             App.one($route.current.params.id).get().
                 then(function (app) {
                     $scope.app = app;
@@ -16,7 +19,15 @@ angular.module('cadence.app.ctrls').controller('viewAppCtrl',
 
             //Subscribe to the socket for updates
             var dereg = Sockets.subscribe("metricsChanged", function () {
-                console.log("The metrics just changed!");
+                if ($scope.app) {
+                    App.metrics($scope.app.id).then(function (metrics) {
+                       if (typeof $scope.chartFns.updateRealtimeChart === 'function') {
+                           $scope.chartFns.updateRealtimeChart(metrics);
+                       }
+                    });
+                } else {
+                    throw "No app defined on the $scope, check the code.";
+                }
             });
 
             //Removes the web socket when the $scope is destroyed
