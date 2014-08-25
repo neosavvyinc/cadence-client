@@ -130,5 +130,6 @@
   /* Module Instantiation */
   angular.module('cadence.app.ctrls', []);
   angular.module('cadence.chart.directives', []);
+    angular.module('cadence.data', []);
 
 }).call(this);

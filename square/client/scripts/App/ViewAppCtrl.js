@@ -1,6 +1,6 @@
 angular.module('cadence.app.ctrls').controller('viewAppCtrl',
-    ['$scope', '$location', 'App', 'Sockets', '$route',
-        function ($scope, $location, App, Sockets, $route) {
+    ['$scope', '$location', 'App', 'Sockets', '$route', 'DataTransformers',
+        function ($scope, $location, App, Sockets, $route, dataTransformers) {
 
             //Load up the app
             App.one($route.current.params.id).get().
@@ -28,6 +28,10 @@ angular.module('cadence.app.ctrls').controller('viewAppCtrl',
                 line: 'Line Chart'
             };
 
+            //Getters
+            $scope.transformers = dataTransformers;
+
+            //Action Handlers
             $scope.sampleCheckin = function () {
                 App.checkin({appId: String($scope.app.id), deviceId: 'DASHBOARD_TEST_' + $scope.app.id});
             };

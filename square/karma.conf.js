@@ -28,6 +28,8 @@ module.exports = function (config) {
             'client/bower_components/ngmap/dist/ng-map.js',
             'client/bower_components/ng-tags-input/ng-tags-input.js',
             'client/bower_components/restangular/dist/restangular.js',
+            'client/bower_components/reconnecting-websocket/reconnecting-websocket.js',
+            'client/bower_components/momentjs/moment.js',
             'client/scripts/app.js',
             'client/scripts/**/*.js',
             'test/scripts/**/*.js'

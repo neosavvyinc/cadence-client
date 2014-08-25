@@ -25,11 +25,11 @@
                         var lastIndex = subscriptions[event].push(handler) - 1;
 
                         /* Returns a de-registration function */
-                        return (function (index) {
+                        return (function (event, index) {
                             return function() {
-                                subscriptions.splice(index, 1);
+                                subscriptions[event].splice(index, 1);
                             };
-                        })(lastIndex);
+                        })(event, lastIndex);
                     }
                 }
             }]);

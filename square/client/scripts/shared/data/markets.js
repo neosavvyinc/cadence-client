@@ -1,4 +1,4 @@
-angular.module('cadence.data', []).constant('MarketsData', [
+angular.module('cadence.data').constant('MarketsData', [
     'Books',
     'Business',
     'Catalogs',
