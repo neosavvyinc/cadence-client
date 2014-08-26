@@ -7,8 +7,10 @@
                 allMetrics = Restangular.all("metrics"),
                 allApps = Restangular.all(name),
                 appMethods = {
-                    metrics: function (id) {
-                        return allMetrics.all(id).getList();
+                    metrics: function (id, params) {
+                        params = params || {};
+                        var timeFilter = params.timeFilter;
+                        return allMetrics.all(id).getList({ timeFilter: timeFilter });
                     },
                     checkin: function (params) {
                         params = params || this;

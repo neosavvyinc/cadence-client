@@ -1,6 +1,10 @@
+angular.module('cadence.app.services').value('metricsChangedRequest', {
+    value: undefined
+});
+
 angular.module('cadence.app.ctrls').controller('viewAppCtrl',
-    ['$scope', '$location', 'App', 'Sockets', '$route', 'DataTransformers',
-        function ($scope, $location, App, Sockets, $route, dataTransformers) {
+    ['$scope', '$location', 'App', 'Sockets', '$route', 'DataTransformers', 'metricsChangedRequest',
+        function ($scope, $location, App, Sockets, $route, dataTransformers, metricsChangedRequest) {
 
             //Load up the app
             $scope.chartFns = {
@@ -20,10 +24,12 @@ angular.module('cadence.app.ctrls').controller('viewAppCtrl',
             //Subscribe to the socket for updates
             var dereg = Sockets.subscribe("metricsChanged", function () {
                 if ($scope.app) {
-                    App.metrics($scope.app.id).then(function (metrics) {
+                    var timeFilter = metricsChangedRequest.value;
+                    metricsChangedRequest.value = moment();
+                    App.metrics($scope.app.id, { timeFilter: timeFilter.format("YYYY-MM-DD HH:mm:SS") }).then(function (metrics) {
                        if (typeof $scope.chartFns.updateRealtimeChart === 'function') {
                            $scope.chartFns.updateRealtimeChart(metrics);
-                           $scope.connectedClients = _.last(metrics).count;
+                           //$scope.connectedClients = Neosavvy.Core.Utils.MapUtils.highPerformanceGet(_.last(metrics), 'count') || 0;
                        }
                     });
                 } else {

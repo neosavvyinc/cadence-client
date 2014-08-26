@@ -1,8 +1,8 @@
 (function () {
     'use strict';
 
-    angular.module('cadence.chart.directives').directive('realtimeChart', ['$timeout', '$interval',
-        function ($timeout, $interval) {
+    angular.module('cadence.chart.directives').directive('realtimeChart', ['$timeout', '$interval', 'metricsChangedRequest',
+        function ($timeout, $interval, metricsChangedRequest) {
             return {
                 restrict: 'A',
                 scope: {
@@ -54,13 +54,13 @@
                                 },
                                 yaxis: {
                                     min: 0,
-                                    max: 150
+                                    max: 15
                                 },
                                 xaxis: {
-                                    show: true,
-                                    tickFormatter: function (timestamp) {
-                                        return moment.unix(timestamp).format("H:mm:SS");
-                                    }
+                                    show: false
+//                                    tickFormatter: function (timestamp) {
+//                                        return moment.unix(timestamp).format("H:mm:SS");
+//                                    }
                                 },
                                 grid: {
                                     hoverable: true,
@@ -88,25 +88,31 @@
                         ns.applyTo(scope.$parent, attrs.updateTrigger, function (data) {
                             var earlier = _getEarlierTime();
 
-                            data = _.filter(data, function (d) {
-                                return moment(d.time).isAfter(earlier);
-                            });
+//                            data = _.filter(data, function (d) {
+//                                return moment(d.time).isAfter(earlier);
+//                            });
                             // having to use this offset sucks. it's ugly,
                             // not to mention the obvious long-running app concerns,
                             // where this number just keeps growing and growing.
                             // ideally, it'd be great to receive a delta of the data
                             // so that we could just append to the end and slice out
                             // the beginning... is this possible from the server side?
-                            if (_data.length && (_data.length !== data.length)) {
-                                _offset += data.length - _data.length;
-                            }
+//                            if (_data.length && (_data.length !== data.length)) {
+//                                _offset += data.length - _data.length;
+//                            }
                             
-                            _data = data;
+                            console.log(data.length, data);
+                            var newData = _data.slice(data.length);
+                            newData.push(data);
+                            newData = _.flatten(newData);
+                            _data = newData;
+                            console.log('_data length', _data.length)
                         });
                     }
 
                     scope.$watch('chartData', function (val) {
                         if (val && val.length) {
+                            metricsChangedRequest.value = moment();
                             var earlier = _getEarlierTime(),
                                 data = _.filter(val, function (d) {
                                     return moment(d.time).isAfter(earlier);
