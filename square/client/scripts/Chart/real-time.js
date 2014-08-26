@@ -77,9 +77,12 @@
                     if (attrs.updateTrigger) {
                         ns.applyTo(scope.$parent, attrs.updateTrigger, function (data) {
 
-//                            if (oldIds.length && diff.length) {
-//                                _offset += diff.length;
-//                            }
+                            // having to use this offset sucks. it's ugly,
+                            // not to mention the obvious long-running app concerns,
+                            // where this number just keeps growing and growing.
+                            // ideally, it'd be great to receive a delta of the data
+                            // so that we could just append to the end and slice out
+                            // the beginning... is this possible from the server side?
                             if (_data.length && (_data.length !== data.length)) {
                                 _offset += data.length - _data.length;
                             }
@@ -92,11 +95,6 @@
                         var re = /\sZ$/g;
                         if (val && val.length) {
                             var now = moment().subtract(5, "minutes")
-//                            _.merge(_data, _.filter(val, function (item) {
-//                                var parsed = item.time.replace(re, '');
-//                                return moment(parsed).isAfter(now);
-//                            }));
-//                            _initData(_data);
                             _initData(val);
                         }
                     });
