@@ -31,7 +31,7 @@
   ]).config([
     '$routeProvider', 'RestangularProvider', function($routeProvider, RestangularProvider) {
 
-      RestangularProvider.setBaseUrl('/');
+      RestangularProvider.setBaseUrl('/api/');
       return $routeProvider.when('/', {
         redirectTo: '/apps/none'
       }).when('/apps/create', {

@@ -4,7 +4,7 @@
         .factory('Sockets', ['$location',
             function ($location) {
                 /* Want to use $location.port(), but the proxy is not working for sockets */
-                var ws = new ReconnectingWebSocket("ws://" + $location.host() + ":8080"),
+                var ws = new ReconnectingWebSocket("ws://" + $location.host() + ":7070"),
                     subscriptions = {};
 
                 ws.onmessage = function (event) {

@@ -44,6 +44,6 @@ angular.module('cadence.app.ctrls').controller('viewAppCtrl',
 
             //Action Handlers
             $scope.sampleCheckin = function () {
-                App.checkin({ appId: String($scope.app.id), deviceId: 'DASHBOARD_TEST_' + $scope.app.id });
+                App.checkin({ appId: String($scope.app.apiKey), deviceId: 'DASHBOARD_TEST_' + $scope.app.id });
             };
         }]);
