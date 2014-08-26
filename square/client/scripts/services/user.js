@@ -14,7 +14,6 @@
                 login: function (params) {
                     params = params || this;
                     return allUsers.all('login').customPOST(_.pick(params, 'email', 'password')).then(function (res) {
-                        debugger;
                         currentUser = res;
                         return res;
                     });
