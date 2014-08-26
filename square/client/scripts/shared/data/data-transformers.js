@@ -6,7 +6,8 @@
                 if (data && data.length) {
                     return _.map(data, function (m, i) {
                         var parsed = moment(m.time);
-                        return [parsed.unix(), m.count, parsed.format("MMM D, H:mm:SS")];
+                        //return [parsed.unix(), m.count, parsed.format("MMM D, H:mm:SS")];
+                        return [i, m.count, parsed.format("MMM D, H:mm:SS")];
                     });
                 }
                 return data;

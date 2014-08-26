@@ -57,7 +57,7 @@
                                     max: 15
                                 },
                                 xaxis: {
-                                    show: false
+                                    mode: "time",
 //                                    tickFormatter: function (timestamp) {
 //                                        return moment.unix(timestamp).format("H:mm:SS");
 //                                    }
@@ -101,12 +101,9 @@
 //                                _offset += data.length - _data.length;
 //                            }
                             
-                            console.log(data.length, data);
                             var newData = _data.slice(data.length);
-                            newData.push(data);
-                            newData = _.flatten(newData);
+                            newData = newData.concat(data);
                             _data = newData;
-                            console.log('_data length', _data.length)
                         });
                     }
 
